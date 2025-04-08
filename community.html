@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - Arabic Tajweed Learning for Muslim Women</title>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-900">
+    <!-- Navbar -->
+    <nav class="navbar-glass fixed w-full z-10">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="text-2xl font-bold">
+                    <span class="gradient-text">Tajweed</span><span class="text-amber-400">Learn</span>
+                </a>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 font-semibold text-sm">Home</a>
+                <a href="index.html#about" class="text-gray-700 hover:text-indigo-600 transition duration-300 font-semibold text-sm">About Us</a>
+                <a href="index.html#blog" class="text-gray-700 hover:text-indigo-600 transition duration-300 font-semibold text-sm">Blog</a>
+                <a href="community.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 font-semibold text-sm border-b-2 border-indigo-500">Community</a>
+                <a href="index.html#join" class="text-gray-700 hover:text-indigo-600 transition duration-300 font-semibold text-sm">Join Us</a>
+                <a href="index.html#contact" class="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold text-sm py-1.5 px-4 rounded-full transition-all duration-300 shadow-sm hover:shadow-md hover:scale-105 transform flex items-center justify-center">Contact</a>
+            </div>
+            <div class="md:hidden flex items-center">
+                <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden glass w-full">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-4">
+                <a href="index.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 font-semibold text-sm">Home</a>
+                <a href="index.html#about" class="text-gray-700 hover:text-indigo-600 transition duration-300 font-semibold text-sm">About Us</a>
+                <a href="index.html#blog" class="text-gray-700 hover:text-indigo-600 transition duration-300 font-semibold text-sm">Blog</a>
+                <a href="community.html" class="text-gray-700 hover:text-indigo-600 transition duration-300 font-semibold text-sm border-b-2 border-indigo-500">Community</a>
+                <a href="index.html#join" class="text-gray-700 hover:text-indigo-600 transition duration-300 font-semibold text-sm">Join Us</a>
+                <a href="index.html#contact" class="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold text-sm py-1.5 px-4 rounded-full transition-all duration-300 shadow-sm hover:shadow-md inline-flex items-center justify-center">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login/Signup Modal -->
+    <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center hidden">
+        <div class="bg-gray-800 bg-opacity-90 backdrop-filter backdrop-blur-lg p-8 rounded-xl w-full max-w-md relative border border-gray-700 shadow-2xl">
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-indigo-400 transition duration-300">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+
+            <!-- Tabs -->
+            <div class="flex border-b border-gray-600 mb-6">
+                <button id="login-tab" class="py-2 px-4 text-white font-medium border-b-2 border-indigo-500">Login</button>
+                <button id="signup-tab" class="py-2 px-4 text-gray-400 font-medium">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login-form" class="space-y-4">
+                <div>
+                    <label for="login-email" class="block text-gray-300 mb-2 font-light">Email</label>
+                    <input type="email" id="login-email" class="w-full px-4 py-2 bg-gray-700 bg-opacity-50 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 border border-gray-600" required>
+                </div>
+                <div>
+                    <label for="login-password" class="block text-gray-300 mb-2 font-light">Password</label>
+                    <input type="password" id="login-password" class="w-full px-4 py-2 bg-gray-700 bg-opacity-50 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 border border-gray-600" required>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="remember-me" class="mr-2 h-4 w-4 text-indigo-600 bg-gray-700 border-gray-600">
+                        <label for="remember-me" class="text-gray-300 font-light">Remember me</label>
+                    </div>
+                    <a href="#" class="text-indigo-400 hover:text-indigo-300 font-light">Forgot password?</a>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white py-2 px-4 rounded-lg transition-all duration-300 mt-4 shadow-lg hover:shadow-indigo-500/50 transform hover:scale-[1.02]">
+                    Login
+                </button>
+            </div>
+
+            <!-- Signup Form -->
+            <div id="signup-form" class="space-y-4 hidden">
+                <div>
+                    <label for="signup-name" class="block text-gray-300 mb-2 font-light">Full Name</label>
+                    <input type="text" id="signup-name" class="w-full px-4 py-2 bg-gray-700 bg-opacity-50 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 border border-gray-600" required>
+                </div>
+                <div>
+                    <label for="signup-email" class="block text-gray-300 mb-2 font-light">Email</label>
+                    <input type="email" id="signup-email" class="w-full px-4 py-2 bg-gray-700 bg-opacity-50 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 border border-gray-600" required>
+                </div>
+                <div>
+                    <label for="signup-password" class="block text-gray-300 mb-2 font-light">Password</label>
+                    <input type="password" id="signup-password" class="w-full px-4 py-2 bg-gray-700 bg-opacity-50 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 border border-gray-600" required>
+                </div>
+                <div>
+                    <label for="signup-confirm-password" class="block text-gray-300 mb-2 font-light">Confirm Password</label>
+                    <input type="password" id="signup-confirm-password" class="w-full px-4 py-2 bg-gray-700 bg-opacity-50 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 border border-gray-600" required>
+                </div>
+                <div class="flex items-center">
+                    <input type="checkbox" id="agree-terms" class="mr-2 h-4 w-4 text-indigo-600 bg-gray-700 border-gray-600" required>
+                    <label for="agree-terms" class="text-gray-300 font-light">I agree to the <a href="#" class="text-indigo-400 hover:text-indigo-300">Terms of Service</a> and <a href="#" class="text-indigo-400 hover:text-indigo-300">Privacy Policy</a></label>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white py-2 px-4 rounded-lg transition-all duration-300 mt-4 shadow-lg hover:shadow-indigo-500/50 transform hover:scale-[1.02]">
+                    Sign Up
+                </button>
+            </div>
+
+            <!-- Social Login -->
+            <div class="mt-6">
+                <div class="relative">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-600"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-gray-800 text-gray-400">Or continue with</span>
+                    </div>
+                </div>
+
+                <div class="mt-6 grid grid-cols-3 gap-3">
+                    <button class="bg-gray-700 bg-opacity-50 hover:bg-gray-600 py-2 px-4 rounded-lg flex justify-center items-center border border-gray-600 transition-all duration-300 transform hover:scale-105">
+                        <i class="fab fa-google text-gray-300"></i>
+                    </button>
+                    <button class="bg-gray-700 bg-opacity-50 hover:bg-gray-600 py-2 px-4 rounded-lg flex justify-center items-center border border-gray-600 transition-all duration-300 transform hover:scale-105">
+                        <i class="fab fa-facebook-f text-gray-300"></i>
+                    </button>
+                    <button class="bg-gray-700 bg-opacity-50 hover:bg-gray-600 py-2 px-4 rounded-lg flex justify-center items-center border border-gray-600 transition-all duration-300 transform hover:scale-105">
+                        <i class="fab fa-twitter text-gray-300"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-28 pb-20 min-h-screen relative overflow-hidden">
+        <!-- Decorative elements for modern look -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
+            <div class="absolute top-0 left-0 w-1/3 h-1/3 bg-indigo-500 rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-1/3 h-1/3 bg-purple-500 rounded-full filter blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
+            <div class="absolute top-1/2 left-1/2 w-1/4 h-1/4 bg-pink-500 rounded-full filter blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto">
+                <!-- Community Header -->
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-white mb-4">Community Posts</h1>
+                    <div class="h-1 w-24 bg-gradient-to-r from-indigo-500 to-purple-600 mx-auto mb-6 rounded-full"></div>
+                    <p class="text-gray-300 max-w-2xl mx-auto">
+                        Connect with other Muslim women learning Tajweed. Share your experiences, ask questions, and support each other on your Tajweed journey.
+                    </p>
+                </div>
+
+                <!-- Post Creation Card -->
+                <div class="bg-gradient-to-br from-indigo-900 to-purple-900 p-1 rounded-lg mb-8 shadow-xl transform transition-all duration-300 hover:shadow-indigo-500/30">
+                    <div class="bg-gray-800 bg-opacity-70 backdrop-filter backdrop-blur-lg p-6 rounded-lg border border-gray-700 relative overflow-hidden">
+                        <!-- Decorative elements -->
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500 opacity-10 rounded-full transform translate-x-16 -translate-y-16"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-purple-500 opacity-10 rounded-full transform -translate-x-12 translate-y-12"></div>
+
+                        <h3 class="text-xl font-semibold text-white mb-4 flex items-center">
+                            <i class="fas fa-feather-alt mr-2 text-indigo-400"></i>
+                            Create a Post
+                        </h3>
+
+                        <div class="flex space-x-4 relative z-10">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold shadow-lg">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="flex-1">
+                                <textarea id="post-content" class="w-full px-4 py-3 bg-gray-700 bg-opacity-50 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 min-h-[120px] placeholder-gray-400 border border-gray-600" placeholder="What's on your mind about Tajweed?"></textarea>
+
+                                <div class="flex justify-end items-center mt-4">
+                                    <button id="submit-post" class="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white px-6 py-2 rounded-full font-medium shadow-lg hover:shadow-indigo-500/50 transition-all duration-300 transform hover:scale-105 flex items-center">
+                                        <i class="fas fa-paper-plane mr-2"></i>
+                                        Post
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Post (Featured) -->
+                <div class="bg-gradient-to-br from-indigo-900 to-purple-900 p-1 rounded-lg mb-8 shadow-xl transform transition-all duration-300 hover:scale-[1.01] hover:shadow-indigo-500/30">
+                    <div class="bg-gray-800 bg-opacity-70 backdrop-filter backdrop-blur-lg p-6 rounded-lg border border-gray-700 relative overflow-hidden">
+                        <!-- Decorative elements -->
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500 opacity-10 rounded-full transform translate-x-16 -translate-y-16"></div>
+                        <div class="absolute bottom-0 left-0 w-24 h-24 bg-purple-500 opacity-10 rounded-full transform -translate-x-12 translate-y-12"></div>
+
+                        <div class="flex space-x-4 relative z-10">
+                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-pink-500 to-rose-500 flex items-center justify-center text-white font-bold shadow-lg">
+                                M
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-semibold text-white flex items-center">
+                                            Maryam Hassan
+                                            <span class="ml-2 bg-indigo-500 text-xs text-white px-2 py-0.5 rounded-full">Moderator</span>
+                                        </h4>
+                                        <p class="text-gray-400 text-sm">@maryam_h • Just now</p>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <span class="text-xs bg-indigo-500 bg-opacity-20 text-indigo-300 px-2 py-1 rounded-full">Pinned</span>
+                                        <div class="relative post-menu">
+                                            <button class="text-gray-400 hover:text-indigo-400 transition duration-300 post-menu-btn">
+                                                <i class="fas fa-ellipsis-h"></i>
+                                            </button>
+                                            <div class="absolute right-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg py-1 z-10 hidden post-menu-dropdown">
+                                                <button class="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition duration-150 delete-post-btn">
+                                                    <i class="fas fa-trash-alt mr-2 text-red-400"></i> Delete Post
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <p class="text-gray-300">Welcome to our Tajweed community! 🌟 This is a safe space for all sisters to share their Tajweed journey, ask questions, and support each other. Please remember to be kind and respectful in all interactions. Check out our <span class="text-indigo-400">#guidelines</span> for more information.</p>
+                                </div>
+                                <div class="mt-4 flex justify-between">
+                                    <div class="flex space-x-6">
+                                        <button class="flex items-center space-x-1 text-gray-400 hover:text-red-400 transition duration-300">
+                                            <i class="far fa-heart"></i>
+                                            <span>58</span>
+                                        </button>
+                                        <button class="flex items-center space-x-1 text-gray-400 hover:text-blue-400 transition duration-300">
+                                            <i class="far fa-comment"></i>
+                                            <span>12</span>
+                                        </button>
+
+                                    </div>
+                                    <button class="text-gray-400 hover:text-indigo-400 transition duration-300">
+                                        <i class="far fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Posts Feed -->
+                <div id="posts-feed" class="space-y-6">
+                    <!-- Sample Post 1 -->
+                    <div class="bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg p-6 rounded-lg border border-gray-700 shadow-xl transform transition-all duration-300 hover:scale-[1.01] hover:shadow-indigo-500/20">
+                        <div class="flex space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold shadow-lg">
+                                A
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-semibold text-white">Aisha Rahman</h4>
+                                        <p class="text-gray-400 text-sm">@aisha_r • 2 hours ago</p>
+                                    </div>
+                                    <div class="relative post-menu">
+                                        <button class="text-gray-400 hover:text-indigo-400 transition duration-300 post-menu-btn">
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+                                        <div class="absolute right-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg py-1 z-10 hidden post-menu-dropdown">
+                                            <button class="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition duration-150 delete-post-btn">
+                                                <i class="fas fa-trash-alt mr-2 text-red-400"></i> Delete Post
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <p class="text-gray-300">Alhamdulillah, I finally mastered the pronunciation of ض (Dhad) after weeks of practice! Any tips for ظ (Dha) which I'm still struggling with? #TajweedJourney</p>
+                                </div>
+                                <div class="mt-4 flex justify-between">
+                                    <div class="flex space-x-6">
+                                        <button class="flex items-center space-x-1 text-gray-400 hover:text-red-400 transition duration-300">
+                                            <i class="far fa-heart"></i>
+                                            <span>24</span>
+                                        </button>
+                                        <button class="flex items-center space-x-1 text-gray-400 hover:text-blue-400 transition duration-300">
+                                            <i class="far fa-comment"></i>
+                                            <span>5</span>
+                                        </button>
+                                    </div>
+                                    <button class="text-gray-400 hover:text-indigo-400 transition duration-300">
+                                        <i class="far fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sample Post 2 -->
+                    <div class="bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg p-6 rounded-lg border border-gray-700 shadow-xl transform transition-all duration-300 hover:scale-[1.01] hover:shadow-indigo-500/20">
+                        <div class="flex space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-emerald-600 flex items-center justify-center text-white font-bold shadow-lg">
+                                F
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-semibold text-white">Fatima Zahra</h4>
+                                        <p class="text-gray-400 text-sm">@fatima_z • 1 day ago</p>
+                                    </div>
+                                    <div class="relative post-menu">
+                                        <button class="text-gray-400 hover:text-indigo-400 transition duration-300 post-menu-btn">
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+                                        <div class="absolute right-0 mt-2 w-48 bg-gray-800 rounded-md shadow-lg py-1 z-10 hidden post-menu-dropdown">
+                                            <button class="block w-full text-left px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition duration-150 delete-post-btn">
+                                                <i class="fas fa-trash-alt mr-2 text-red-400"></i> Delete Post
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-3">
+                                    <p class="text-gray-300">Just finished my first online Tajweed class with Ustadha Khadija. Her explanation of the rules of Noon Saakin was so clear! Looking forward to next week's class. Who else is in the intermediate group? #TajweedLearn</p>
+                                </div>
+                                <div class="mt-4">
+                                    <div class="bg-gray-700 bg-opacity-50 overflow-hidden rounded-lg border border-gray-600">
+                                        <img src="https://placehold.co/600x300/0f172a/e2e8f0?text=Online+Class&font=playfair-display" alt="Online Tajweed class" class="w-full h-48 object-cover">
+                                    </div>
+                                </div>
+                                <div class="mt-4 flex justify-between">
+                                    <div class="flex space-x-6">
+                                        <button class="flex items-center space-x-1 text-gray-400 hover:text-red-400 transition duration-300">
+                                            <i class="far fa-heart"></i>
+                                            <span>42</span>
+                                        </button>
+                                        <button class="flex items-center space-x-1 text-gray-400 hover:text-blue-400 transition duration-300">
+                                            <i class="far fa-comment"></i>
+                                            <span>12</span>
+                                        </button>
+                                    </div>
+                                    <button class="text-gray-400 hover:text-indigo-400 transition duration-300">
+                                        <i class="far fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sample Post 3 -->
+                    <div class="bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg p-6 rounded-lg border border-gray-700 shadow-xl transform transition-all duration-300 hover:scale-[1.01] hover:shadow-indigo-500/20">
+                        <div class="flex space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-amber-600 flex items-center justify-center text-white font-bold shadow-lg">
+                                S
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-semibold text-white">Sarah Abdullah</h4>
+                                        <p class="text-gray-400 text-sm">@sarah_a • 3 days ago</p>
+                                    </div>
+                                    <button class="text-gray-400 hover:text-indigo-400 transition duration-300">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </button>
+                                </div>
+                                <div class="mt-3">
+                                    <p class="text-gray-300">Resource recommendation: I found this amazing app that helps with Tajweed practice. It highlights the rules as you read and gives instant feedback on your recitation. Has anyone else tried "Quran Tajweed Pro"? #TajweedResources</p>
+                                </div>
+                                <div class="mt-4 flex justify-between">
+                                    <div class="flex space-x-6">
+                                        <button class="flex items-center space-x-1 text-gray-400 hover:text-red-400 transition duration-300">
+                                            <i class="far fa-heart"></i>
+                                            <span>36</span>
+                                        </button>
+                                        <button class="flex items-center space-x-1 text-gray-400 hover:text-blue-400 transition duration-300">
+                                            <i class="far fa-comment"></i>
+                                            <span>18</span>
+                                        </button>
+                                    </div>
+                                    <button class="text-gray-400 hover:text-indigo-400 transition duration-300">
+                                        <i class="far fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sample Post 4 (with image) -->
+                    <div class="bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg p-6 rounded-lg border border-gray-700 shadow-xl transform transition-all duration-300 hover:scale-[1.01] hover:shadow-indigo-500/20">
+                        <div class="flex space-x-4">
+                            <div class="w-12 h-12 rounded-full bg-teal-600 flex items-center justify-center text-white font-bold shadow-lg">
+                                N
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-semibold text-white">Noor Jahan</h4>
+                                        <p class="text-gray-400 text-sm">@noor_j • 5 days ago</p>
+                                    </div>
+                                    <button class="text-gray-400 hover:text-indigo-400 transition duration-300">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </button>
+                                </div>
+                                <div class="mt-3">
+                                    <p class="text-gray-300 mb-4">I created this visual guide for the rules of Meem Saakin that helped me remember them easily. Hope it helps others too! Feel free to save and share. #TajweedTips #VisualLearning</p>
+                                    <div class="rounded-lg overflow-hidden border border-gray-600 mb-3">
+                                        <img src="./images/Designer - 2025-04-08T120211.602.jpeg" alt="Meem Saakin Rules Visual Guide" class="w-full object-cover">
+                                    </div>
+                                    <div class="flex flex-wrap gap-2">
+                                        <span class="text-xs bg-indigo-500 bg-opacity-20 text-indigo-300 px-2 py-1 rounded-full">#TajweedTips</span>
+                                        <span class="text-xs bg-purple-500 bg-opacity-20 text-purple-300 px-2 py-1 rounded-full">#VisualLearning</span>
+                                        <span class="text-xs bg-blue-500 bg-opacity-20 text-blue-300 px-2 py-1 rounded-full">#MeemSaakin</span>
+                                    </div>
+                                </div>
+                                <div class="mt-4 flex justify-between">
+                                    <div class="flex space-x-6">
+                                        <button class="flex items-center space-x-1 text-gray-400 hover:text-red-400 transition duration-300">
+                                            <i class="far fa-heart"></i>
+                                            <span>72</span>
+                                        </button>
+                                        <button class="flex items-center space-x-1 text-gray-400 hover:text-blue-400 transition duration-300">
+                                            <i class="far fa-comment"></i>
+                                            <span>24</span>
+                                        </button>
+
+                                    </div>
+                                    <button class="text-gray-400 hover:text-indigo-400 transition duration-300">
+                                        <i class="fas fa-bookmark text-indigo-400"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="text-center mt-10">
+                    <button class="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-medium py-3 px-8 rounded-lg transform hover:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-indigo-500/50 group">
+                        <span class="flex items-center justify-center">
+                            Load More Posts
+                            <i class="fas fa-chevron-down ml-2 group-hover:animate-bounce"></i>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12 border-t border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Logo and Mission -->
+                <div class="md:col-span-1">
+                    <a href="index.html" class="text-2xl font-bold mb-4 block">
+                        <span class="gradient-text">Tajweed</span><span class="text-amber-400">Learn</span>
+                    </a>
+                    <p class="text-gray-400 mb-6">Connecting Muslim women worldwide through free, accessible Tajweed education.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-indigo-400 transition duration-300 hover:scale-110 transform">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-400 transition duration-300 hover:scale-110 transform">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-400 transition duration-300 hover:scale-110 transform">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-indigo-400 transition duration-300 hover:scale-110 transform">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="md:col-span-1">
+                    <h3 class="text-lg font-semibold mb-4 gradient-text">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-indigo-400 transition duration-300 hover:translate-x-1 inline-block transform">Home</a></li>
+                        <li><a href="index.html#about" class="text-gray-400 hover:text-indigo-400 transition duration-300 hover:translate-x-1 inline-block transform">About Us</a></li>
+                        <li><a href="index.html#blog" class="text-gray-400 hover:text-indigo-400 transition duration-300 hover:translate-x-1 inline-block transform">Blog</a></li>
+                        <li><a href="community.html" class="text-gray-400 hover:text-indigo-400 transition duration-300 hover:translate-x-1 inline-block transform">Community</a></li>
+                        <li><a href="index.html#join" class="text-gray-400 hover:text-indigo-400 transition duration-300 hover:translate-x-1 inline-block transform">Join Us</a></li>
+                        <li><a href="index.html#contact" class="text-gray-400 hover:text-indigo-400 transition duration-300 hover:translate-x-1 inline-block transform">Contact</a></li>
+                        <li><a href="https://quran.com" target="_blank" class="text-gray-400 hover:text-indigo-400 transition duration-300 hover:translate-x-1 inline-block transform flex items-center">
+                            Quran.com
+                            <i class="fas fa-external-link-alt text-xs ml-1"></i>
+                        </a></li>
+                        <li><a href="https://sunnah.com" target="_blank" class="text-gray-400 hover:text-indigo-400 transition duration-300 hover:translate-x-1 inline-block transform flex items-center">
+                            Sunnah.com
+                            <i class="fas fa-external-link-alt text-xs ml-1"></i>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="md:col-span-1">
+                    <h3 class="text-lg font-semibold mb-4 gradient-text-secondary">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-indigo-400"></i>
+                            <span class="text-gray-400 hover:text-indigo-400 transition duration-300">info@tajweedlearn.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fab fa-whatsapp mt-1 mr-3 text-indigo-400"></i>
+                            <span class="text-gray-400 hover:text-indigo-400 transition duration-300">+1 234 567 8900</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-3 text-indigo-400"></i>
+                            <span class="text-gray-400 hover:text-indigo-400 transition duration-300">Global Online Community</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="md:col-span-1">
+                    <h3 class="text-lg font-semibold mb-4 gradient-text">Newsletter</h3>
+                    <p class="text-gray-400 mb-4">Subscribe to receive updates on new classes and resources.</p>
+                    <form class="space-y-2">
+                        <input type="email" placeholder="Your email address" class="w-full px-4 py-2 bg-gray-700 bg-opacity-50 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 border border-gray-600 placeholder-gray-400">
+                        <button type="submit" class="w-full bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white py-2 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-indigo-500/50 transform hover:scale-[1.02]">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-10 pt-6 text-center">
+                <p class="text-gray-400">&copy; 2023 TajweedLearn. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script src="community.js"></script>
+</body>
+</html>
